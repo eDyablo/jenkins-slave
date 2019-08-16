@@ -2,7 +2,7 @@ FROM jenkinsci/jnlp-slave:alpine
 
 # Do all installations as root
 USER root
-RUN su - root
+RUN su - root && chown root /home/jenkins
 
 # Update packages
 RUN apk update && apk upgrade
@@ -31,7 +31,3 @@ RUN kubectl_version=$(curl -s https://storage.googleapis.com/kubernetes-release/
 
 # Install awscli
 RUN pip install awscli --upgrade
-
-# Switch back to jenkins
-RUN su - jenkins
-USER jenkins
