@@ -31,3 +31,6 @@ RUN kubectl_version=$(curl -s https://storage.googleapis.com/kubernetes-release/
 
 # Install awscli
 RUN pip install awscli --upgrade
+
+# Install mysql client
+RUN apk add mysql-client
